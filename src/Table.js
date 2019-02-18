@@ -32,7 +32,10 @@ class Table extends Component {
         return (
             <table>
                 <TableHeader />
-                <TableBody characterData={characterData} />
+                <TableBody
+                    characterData={characterData}
+                    removeCharacter={removeCharacter}
+                />
             </table>
         );
     }
