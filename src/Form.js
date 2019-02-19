@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import _ from 'lodash';
+import $ from 'jquery';
 
 class Form extends Component {
     constructor(props) {
@@ -15,15 +17,27 @@ class Form extends Component {
     handleChange = event => {
         const {name, value} = event.target;
 
-        this.setState({
-            [name] : value
-        });
+        if (!_.isEmpty(name) && !_.isEmpty(value)) {
+            this.setState({
+                [name] : value
+            });
+            $('#error').hide();
+        } else {
+            $('#error').show();
+        }
+
+
     }
 
     submitForm = (event) => {
         event.preventDefault();
-        this.props.handleSubmit(this.state);
-        this.setState(this.initialState);
+        if (!_.isEmpty(this.state.name) && !_.isEmpty(this.state.job)) {
+            this.props.handleSubmit(this.state);
+            this.setState(this.initialState);
+        } else {
+            // flash error message here
+            $('#error').show();
+        }
     }
 
     render() {
@@ -33,19 +47,23 @@ class Form extends Component {
             <form onSubmit={this.onFormSubmit}>
                 <label>Name</label>
                 <input
+                    id="name"
                     type="text"
                     name="name"
                     value={name}
                     onChange={this.handleChange} />
                 <label>Job</label>
                 <input
+                    id="job"
                     type="text"
                     name="job"
                     value={job}
                     onChange={this.handleChange}/>
-                <button type="submit">
-                    Submit
-                </button>
+                <input
+                    type="button"
+                    value="Submit"
+                    onClick={this.submitForm} />
+                <span id="error">Form is emtpy</span>
             </form>
         );
     }
