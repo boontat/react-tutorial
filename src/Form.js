@@ -25,8 +25,6 @@ class Form extends Component {
         } else {
             $('#error').show();
         }
-
-
     }
 
     submitForm = (event) => {
@@ -36,6 +34,7 @@ class Form extends Component {
             this.setState(this.initialState);
         } else {
             // flash error message here
+            alert('just wanted to annoy you');
             $('#error').show();
         }
     }
