@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
+import Api from '../Api/Api';
 
 const styles = theme => ({
     content: {
@@ -42,6 +43,11 @@ class Content extends Component {
                     viverra maecenas accumsan lacus vel facilisis. Nulla posuere sollicitudin aliquam
                     ultrices sagittis orci a.
                 </Typography>
+                <hr />
+                <Typography paragraph>
+                    Try calling api:
+                </Typography>
+                <Api />
             </main>
         );
     }
