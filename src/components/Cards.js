@@ -12,14 +12,14 @@ import Typography from '@material-ui/core/Typography';
 const styles = {
   card: {
     maxWidth: 345,
-    maxHeight: 345,
+    maxHeight: 325,
   },
   media: {
     height: 140,
   },
   CardContent: {
     'overflow-y': 'auto',
-    maxHeight: 205
+    maxHeight: 190
   }
 };
 
