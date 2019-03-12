@@ -1,8 +1,27 @@
 import React, { Component } from 'react';
 
+import { withStyles } from '@material-ui/core/styles';
+
+import Card from '../components/Cards';
+import Grid from '@material-ui/core/Grid';
+
+const styles = theme => ({
+    root: {
+      flexGrow: 1,
+    },
+    paper: {
+      height: 140,
+      width: 100,
+    },
+    control: {
+      padding: theme.spacing.unit * 2,
+    },
+});
+
 class Api extends Component {
     state = {
-        data: []
+        data: [],
+        spacing: '16',
     };
 
     componentDidMount() {
@@ -27,17 +46,25 @@ class Api extends Component {
     }
 
     render() {
-        const { host, data } = this.state;
+        const { host, data, spacing } = this.state;
+        const { classes } = this.props;
 
         const result = data.map((entry, index) => {
-            let fullpath = `${host}${entry}`;
             return (
-                <p key={index}><video width="400" controls src={fullpath} type="video/mp4" autoPlay></video></p>
+                <Grid key={index} item><Card data={entry} host={host}/></Grid>
             )
         });
 
-        return <div>{result}</div>
+        return (
+            <Grid container className={classes.root} spacing={16}>
+                <Grid item xs={12}>
+                    <Grid container className={classes.demo} justify="center" spacing={Number(spacing)}>
+                        {result}
+                    </Grid>
+                </Grid>
+            </Grid>
+        )
     }
 }
 
-export default Api;
+export default withStyles(styles)(Api);
