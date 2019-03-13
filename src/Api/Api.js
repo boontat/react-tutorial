@@ -58,7 +58,7 @@ class Api extends Component {
         return (
             <Grid container className={classes.root} spacing={16}>
                 <Grid item xs={12}>
-                    <Grid container className={classes.demo} justify="left" spacing={Number(spacing)}>
+                    <Grid container className={classes.demo} justify="flex-start" spacing={Number(spacing)}>
                         {result}
                     </Grid>
                 </Grid>
